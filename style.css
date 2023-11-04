@@ -1,4 +1,70 @@
-p {
+h1 {
     color: red;
 }
+h2 {
+    color: lightskyblue;
+}
 
+p {
+    color: green;
+}
+
+body {
+    background: rgba(243, 239, 239, 0.617);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(238, 245, 245);
+    background-image: url(https://st4.depositphotos.com/1001092/21759/i/450/depositphotos_217590710-stock-photo-traditional-curry-ingredients-blue-background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 400px;
+    padding: 20px;
+    text-align: center;
+
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+    
+}
+section {
+    background-color: rgb(61, 53, 41);
+    color: gray;
+    padding: 20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+footer {
+    background-color: rgb(16, 58, 96);
+    padding: 20px;
+}
+
+div {
+    background: red;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    margin: auto;
+}
+
+
+  
+  
