@@ -1,70 +1,87 @@
-h1 {
-    color: red;
-}
-h2 {
-    color: lightskyblue;
-}
 
-p {
-    color: green;
+
+h1 {
+    color: rgb(43, 42, 42);
+    
 }
 
 body {
-    background: rgba(243, 239, 239, 0.617);
+    background: rgb(35, 34, 34);
     color: white;
-    font-family: Arial, Helvetica, sans-serif;;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: rgb(238, 245, 245);
-    background-image: url(https://st4.depositphotos.com/1001092/21759/i/450/depositphotos_217590710-stock-photo-traditional-curry-ingredients-blue-background.jpg);
-    background-repeat: no-repeat;
+    background: black;
+    background-image: url(images/platter.jpeg);
     background-size: 100%;
     background-position: center;
+    background-repeat: no-repeat;
     height: 400px;
     padding: 20px;
     text-align: center;
+    
+}
+
+header nav {
+    
+}
+
+section {
+    background: white;
+    color: gray;
+    padding: 20px;
 
 }
-ul {
+
+section.intro {
+    text-align: center;
+}
+
+section.ingredients {
+    text-align: center;
+}
+
+section.meals {
+   
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-
-li {
-    display: inline-block;
-    margin-right: 20px;
 }
+
+section.meals figure {
+    margin: auto;
+    text-align: center;
     
 }
-section {
-    background-color: rgb(61, 53, 41);
-    color: gray;
-    padding: 20px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
 
-}
-
-footer {
-    background-color: rgb(16, 58, 96);
-    padding: 20px;
+section.meals figure img {
+    border-radius: 10%;
+    
 }
 
 div {
     background: red;
-    display: inline-block;
-    width: 100px;
-    height: 20px;
     margin: auto;
+    width: 100px;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 
-  
-  
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+    
+}
+
+footer {
+    background: black;
+    padding: 10px 20px;
+}
