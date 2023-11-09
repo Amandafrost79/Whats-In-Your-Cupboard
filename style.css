@@ -1,7 +1,7 @@
 
 
 h1 {
-    color: rgb(43, 42, 42);
+    color: rgb(179, 64, 64);
     
 }
 
@@ -15,7 +15,7 @@ body {
 
 header {
     background: black;
-    background-image: url("images/platter.jpeg");
+    background-image: url("images/pasta.jpeg");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ header {
 }
 
 header nav{
-    background-color: #fcbf49;
+    background-color: ;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,9 +44,17 @@ header a {
     
 
 }
+header .title a {
+    color: rgb(154, 54, 54);
+    text-align: center;
+    text-transform: none;
+
+}
+
 
 header .logo a {
     background-image: url("images/logo.png");
+
     background-size: 170px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -64,9 +72,10 @@ header .logo a {
    
 }
 section {
-    background: white;
+    background: #F25D27;
     color: rgb(25, 24, 24);
     padding: 20px;
+    text-align: center;
 
 }
 
@@ -76,12 +85,12 @@ section.intro {
 }
 
 section.ingredients {
-    background-color: #eae2b7;
+    background-color: #BF2424;
     text-align: center;
 }
 
 section.meals {
-    background-color: #eae2b7;
+    background-color: #F25D27;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -115,7 +124,7 @@ ul {
 li {
     display: inline-block;
     margin-right: 20px;
-    float: right;
+    
     
     
     
