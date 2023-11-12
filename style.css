@@ -9,27 +9,41 @@ body {
     background: #fcf8f8;
     color: rgb(55, 19, 19);
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0px;
+    margin: 20px;
     padding: 0px;
     text-align: center;
 }
 
 header {
-    background: black;
-    background-image: url("images/pasta.jpeg");
+    background: white;
+    background-image: url("images/smash-burger-tacos-feat.webp");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 400px;
+    height: 500px;
     padding: 20px;
     text-align: center;
     
 }
+.page-one {
+    background-image: url("images/pasta.jpeg");
+}
+
+.page-two {
+    background-image: url("images/pickles-feat.webp");
+}
+.page-three {
+    background-image: url("images/spread.jpeg");
+}
+.page-four {
+    background-image: url("images/platter.jpeg");
+}
 button {
-    background-color: rgb(232, 240, 130);
+    background-color: rgb(238, 184, 184);
     border-radius: 20px;
     width: 100px;
     height: 50px;
+    text-decoration: none;
 
 }
 
@@ -47,16 +61,14 @@ header nav{
 header a {
     color: black;
     text-decoration: none;
-    text-transform: uppercase;
-    
-    
+    text-transform: uppercase;  
 
 }
-header .title a {
-    color: rgb(154, 54, 54);
-    text-align: center;
-    text-transform: none;
 
+button a {
+    text-decoration: none;
+    color: black;
+    
 }
 
 
@@ -92,8 +104,12 @@ section.intro {
 }
 
 section.ingredients {
-    background-color: #ed544cc6;
+    color: white;
+    background-image: url("images/r-ingredients.webp");
+    background-repeat: no-repeat;
     text-align: center;
+    background-size: 100%;
+    height: 200px;
 }
 
 section.meals {
@@ -114,29 +130,15 @@ section.meals figure img {
     
 }
 
-div.container {
-   
-   
-    
-}
-
 ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    
-
 }
 
 li {
     display: inline-block;
     margin-right: 20px;
-}
-    
-
-    
-    
-    
 }
 
 footer {
