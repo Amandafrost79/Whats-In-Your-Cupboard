@@ -23,8 +23,10 @@ header {
     height: 500px;
     padding: 20px;
     text-align: center;
-    
 }
+
+
+
 .page-one {
     background-image: url("images/pasta.jpeg");
 }
@@ -40,15 +42,18 @@ header {
 }
 
 button {
-    background-color: rgb(238, 184, 184);
+    background-color: rgb(174, 190, 202);
+    font-size: large;
     border-radius: 20px;
-    width: 100px;
+    width: 150px;
     height: 50px;
     text-decoration: none;
+    box-shadow: 5px 5px 5px;
 
 }
 
 header nav{
+    
     background-color: whitesmoke;
     position: fixed;
     top: 0;
@@ -58,8 +63,8 @@ header nav{
     
     
 }
-
 header a {
+
     color: black;
     text-decoration: none;
     text-transform: uppercase;  
@@ -78,17 +83,20 @@ header .logo a {
     background-size: 170px;
     background-repeat: no-repeat;
     display: inline-block;
-    text-indent: -999999px;
+    text-indent: -9999999%;
     width: 300px;
     height: 120px;
     position: relative;
     top: -40px;
     margin-left: 40px;
+
        
 }
 .logo {
-    float: inline-start;
-   
+    display: inline-block;
+    float: left;
+    
+
 }
 section {
     background: white;
@@ -162,4 +170,9 @@ li {
 footer {
     background: black;
     padding: 10px 20px;
+}
+
+li a:hover {
+   color: #BF2424; 
+   
 }
