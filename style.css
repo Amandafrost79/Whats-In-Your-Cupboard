@@ -25,6 +25,47 @@ header {
     text-align: center;
 }
 
+nav {
+    background-color: whitesmoke;
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    
+    
+
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+
+}
+
+li {
+    margin: 0 10px;
+    width: 100px;
+    background-color: whitesmoke;
+    padding: 5px;
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid rgb(104, 102, 102);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #BF2424;
+}
 
 
 .page-one {
@@ -52,22 +93,23 @@ button {
 
 }
 
-header nav{
-    width: 1400px;
+/* header nav{
+    width: 1300px;
     background-color: whitesmoke;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 90px;
+    height: 90px; */
+    
     
 }
 
-header a {
+/* header a {
 
     color: black;
     text-decoration: none;
-    text-transform: uppercase; 
+    text-transform: uppercase;  */
     
 
 }
@@ -81,20 +123,22 @@ button a {
 
 header .logo a {
     background-image: url("images/logo.png");
-    background-size: 170px;
+    background-size: 165px;
     background-repeat: no-repeat;
-    display: inline-block;
+    display: flex;
     text-indent: -9999999%;
-    width: 300px;
-    height: 120px;
+    width: 140px;
+    height: 115px;
     position: relative;
-    top: -35px;
-    margin-left: 40px;
-
-       
+    top: -3px;
+    margin-left: 10px;
+    
 }
+
 .logo {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     float: left;
     
 
@@ -157,14 +201,22 @@ section.meals figure img {
     
 }
 
-ul {
+/* ul {
     margin: 0;
     list-style-type: none;
     padding: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 3px solid green; */
+
 
 }
 
-li {
+
+
+ /* ul li {
+    
     display: inline-block;
     margin-right: 20px;
     padding: 35px;
@@ -175,10 +227,15 @@ li {
     text-align: center;
     border: 2px solid rgb(104, 102, 102);
     border-radius: 5px;
-    box-shadow: 5px 5px 5px rgb(103, 101, 101);
+    box-shadow: 5px 5px 5px rgb(103, 101, 101); */ */
 }
 
-li a:hover {
-   color: #BF2424; 
+/* li a:hover {
+   color: #BF2424;  */
    
 }
+
+
+
+
+
