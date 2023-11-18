@@ -84,7 +84,7 @@ a:hover {
     background-image: url("images/spread.jpeg");
 }
 .page-four {
-    background-image: url("images/platter.jpeg");
+    background-image: url("images/smash-burger-tacos-feat.webp");
 }
 
 button {
@@ -236,8 +236,9 @@ ul li {
 
 li a:hover {
    color: #BF2424; 
-   
 }
+
+
 
 .contact {
     width: 40%;
@@ -284,17 +285,19 @@ input[type="submit"] {
 
 @media (max-width: 1050px){
     ul {
-        font-size: xx-small;
+        font-size: small;
         flex-direction: column;
+        align-items: center;
         float: left;
-        padding: 20px;
+        padding: 10px;
         
     }
     ul li {
         margin: 0%;
         padding: 0;
-     
-
+    }
+    .link3, .link4 {
+        
     }
 
 }
