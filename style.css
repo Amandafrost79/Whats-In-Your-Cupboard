@@ -1,6 +1,8 @@
 
 
 h1 {
+    text-align: center;
+    margin-bottom: 20px;
     color: #BF2424;
     
 }
@@ -233,12 +235,48 @@ li a:hover {
    
 }
 
-   @media screen and (max-width: 750px) {
-    ul li {
-        flex-direction: column;
-        text-align:center;
-    }
+.contact {
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+label, 
+input, 
+textarea {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+
+}
+input[type="submit"] {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: #BF2424;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+ input[type="submit"]:hover {
+    background-color: #555;
+ }
 
 
 
