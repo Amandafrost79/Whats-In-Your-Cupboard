@@ -280,9 +280,43 @@ input[type="submit"] {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
- input[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #555;
  }
+
+div.ingredients_list  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+div.ingredients_list label {
+    
+}
+
+div.ingredients_list input {
+    text-align: center;
+    width: 75%;
+}
+
+.btn {
+    background-color: #e15a21;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1050px){
     ul {
@@ -300,6 +334,7 @@ input[type="submit"] {
     
 
 }
+
 
 @media (max-width: 800px) {
     section.meals {

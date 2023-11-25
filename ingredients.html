@@ -30,20 +30,30 @@
         <p>List what you have and we'll do the rest!</p>
     </div>
 
-    <div class="ingredeints_list">
-        <h2>Add Ingredients</h2>
-        <form action="">
-            <label for="ingredeints">Enter Ingredients:</label>
-            <input type="text" placeholder="Ingredients" id="ingredients">
+    <div class="ingredients_list">
+        <h2>Add Ingredients:</h2>
         
-        </form>
+            <input type="text" id="search" placeholder="Enter Ingredients">
+            <br>
+            <button onclick="showOutput()" id="submit" class="btn">Get Recipes!</button>
+
+            <span id="output"></span>
+        
     </div>
 
+    <script>
+        function showOutput() {
+            var search = document.getElementById("search").value;
+
+            var outputSpan = document.getElementById("output");
+            outputSpan.innerHTML = "Your Ingredients: " + search; 
+        }
+    </script>
 
 
 
 
-
+    <!-- <script src="script.js"></script> -->
 </body>
 
-</html>
+</html> 
