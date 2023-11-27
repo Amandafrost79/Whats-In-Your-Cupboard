@@ -290,17 +290,18 @@ div.ingredients_list  {
     align-items: center;
     
 }
-div.ingredients_list label {
-    
-}
 
 div.ingredients_list input {
     text-align: center;
     width: 75%;
 }
+div.ingredients_list span {
+    font-size: ;
+}
 
 .btn {
-    background-color: #e15a21;
+    background-color: #ed8b60;
+    color: black;
 }
 
 

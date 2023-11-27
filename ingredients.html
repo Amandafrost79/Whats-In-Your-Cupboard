@@ -45,10 +45,12 @@
 
     <script>
         function showOutput() {
-            var search = document.getElementById("search").value;
+            let search = document.getElementById("search").value;
 
-            var outputSpan = document.getElementById("output");
+            let outputSpan = document.getElementById("output");
             outputSpan.innerHTML = "Your Ingredients: " + search; 
+
+            document.getElementById("search").value = "";
         }
     </script>
 
