@@ -37,20 +37,46 @@
         <br>
         <button onclick="showOutput()" id="submit" class="btn">Submit</button>
         <br>
-        <span id="output"></span>
+        <span id="recipeList"></span>
         <br>
         <br>
         
-    </div>
+    </div> 
 
     <script>
-        function showOutput() {
-            let search = document.getElementById("search").value;
+        async function showOutput() {
+            const apiKey = 'e8d16b2bccde4b5b85e8739327d12742';
+            const search = document.getElementById("search").value.toLowerCase().split(',').map(i => i.trim());
+            const ingredientString = search.join(',+');
 
-            let outputSpan = document.getElementById("output");
-            outputSpan.innerHTML = "Your Ingredients: " + search; 
+            const apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientString}&apiKey=${apiKey}`;
 
-            document.getElementById("search").value = "";
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                displayRecipes(data);
+            } 
+                catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayRecipes(recipes) {
+            const recipeListSpan = document.getElementById("recipeList");
+            recipeListSpan.innerHTML = "";
+
+            if (recipes.length === 0) {
+                recipeListSpan.innerHTML = "<p>No matching recipes found</p>";
+                return;
+            }
+
+            recipes.forEach(recipe => {
+                const recipeSpan = document.createElement('span');
+                recipeSpan.innerHTML = `<h3>${recipe.title}</h3><img src="${recipe.image}" alt= "${recipe.title}"><p>Missing ingredients: ${recipe.missedIngredientCount}</p>`;
+                recipeListSpan.appendChild(recipeSpan);
+            });
+            
         }
     </script>
 
