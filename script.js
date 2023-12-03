@@ -36,6 +36,7 @@ function getRecipes() {
             } else {
                 recipeList.innerHTML = 'No recipes found.';
             }
+            document.getElementById('ingredientInput').value = '';
         })
         .catch(error => {
             console.error('Error fetching data:', error);
