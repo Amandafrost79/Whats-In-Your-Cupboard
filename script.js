@@ -23,7 +23,7 @@ function getRecipes() {
                     const image = document.createElement('img');
                     image.src = recipe.image;
                     image.alt = recipe.title;
-                    image.width = 200;
+                    image.width = 400;
 
                     const ingredients = document.createElement('p');
                     ingredients.textContent = `Ingredients: ${recipe.usedIngredients.map(ingredient => ingredient.name).join(', ')}`;

@@ -344,3 +344,22 @@ div.ingredients_list span {
         flex-direction: column;
     }
 }
+
+.recipe-item {
+    border: 1px solid #8a8383bc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+
+}
+.recipe-item h3 {
+    margin-bottom: 8px;
+}
+
+.recipe-item img {
+    display: block;
+    margin-bottom: 8px;
+    border-radius: 3px;
+}
