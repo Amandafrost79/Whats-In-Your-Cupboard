@@ -356,6 +356,16 @@ div.ingredients_list span {
 }
 .recipe-item h3 {
     margin-bottom: 8px;
+    font-size: 20px;
+    color: #333;
+}
+.recipe-item h3 a {
+    text-decoration: none;
+    color: #0066cc;
+}
+.recipe-item h3 a:hover {
+    text-decoration: underline;
+    color: #e94638;
 }
 
 .recipe-item img {
