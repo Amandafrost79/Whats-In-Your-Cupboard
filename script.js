@@ -1,18 +1,18 @@
 //Recipe By Ingredients
 
-function getRecipes() {
+async function getRecipes() {
     const apiKey = '53e81641d3264b599390409e59595600';
     const input = document.getElementById('ingredientInput').value;
     const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${input}&number=2&apiKey=${apiKey}`;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
             const recipeList = document.getElementById('recipeList');
             recipeList.innerHTML = '';
 
             if (data && data.length > 0) {
-                data.forEach(recipe => {
+                for (const recipe of data) {
                     const recipeDiv = document.createElement('div');
                     recipeDiv.classList.add('recipe-item');
 
@@ -27,6 +27,13 @@ function getRecipes() {
                     image.alt = recipe.title;
                     image.width = 400;
 
+                    let ingredientsText = '';
+                    if (recipe.usedIngredients && recipe.usedIngredients.length > 0) {
+                        ingredientsText = `Ingredients: ${recipe.usedIngredients.map(ingredient => ingredient.name).join(', ')}`;
+                    } else {
+                        ingredientsText = 'No ingredients available';
+                    }
+
                     const ingredients = document.createElement('p');
                     ingredients.textContent = `Ingredients: ${recipe.usedIngredients.map(ingredient => ingredient.name).join(', ')}`;
 
@@ -34,17 +41,17 @@ function getRecipes() {
                     recipeDiv.appendChild(image);
                     recipeDiv.appendChild(ingredients);
                     recipeList.appendChild(recipeDiv);
-                });
+                }
             } else {
                 recipeList.innerHTML = 'No recipes found.';
             }
             document.getElementById('ingredientInput').value = '';
-        })
-        .catch(error => {
+        }
+        catch (error) {
             console.error('Error fetching data:', error);
             const recipeList = document.getElementById('recipeList');
             recipeList.innerHTML = 'An error occurred while fetching data.';
-        });
+        }
 }
 
 
@@ -69,7 +76,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
             recipeTitle.innerHTML = `<h2>${data.title}</h2>`;
 
-            recipeImage.innerHTML = `<img src="${data.image}" alt="${data.title}" width="600px" height="300px">`;
+            recipeImage.innerHTML = `<img src="${data.image}" alt="${data.title}" width="500px" height="300px">`;
             
             const ingredients = data.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('');
             ingredientList.innerHTML = `<h2>Ingredients:</h2><ul>${ingredients}</ul>`;
