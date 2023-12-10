@@ -29,58 +29,12 @@ header {
     text-align: center;
 }
 
-/* nav {
-    background-color: whitesmoke;
-    height: 80px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-    
-    
-
-}
-
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 20px;
-
-}
-
-li {
-    margin: 0 10px;
-    width: 100px;
-    background-color: whitesmoke;
-    padding: 5px;
-    margin-left: 10px;
-    text-align: center;
-    border: 2px solid rgb(104, 102, 102);
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px;
-}
-
-
-a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #BF2424;
-} */
-
 
 .page-one {
     background-image: url("images/pasta.jpeg");
 }
-
 .page-two {
     background-image: url("images/pickles-feat.webp");
-    
-    
 }
 .page-three {
     background-image: url("images/spread.jpeg");
@@ -221,7 +175,7 @@ ul {
 
 }
 
-ul li {
+li {
     
     display: inline-block;
     margin-right: 20px;
@@ -310,17 +264,6 @@ div.ingredients_list span {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 1050px){
     ul {
         font-size: small;
@@ -330,7 +273,7 @@ div.ingredients_list span {
         padding: 10px;
         
     }
-    ul li {
+    li {
         margin: 0%;
         padding: 0;
     }
@@ -373,3 +316,11 @@ div.ingredients_list span {
     margin-bottom: 8px;
     border-radius: 3px;
 }
+
+.recipe-details {
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: relative;
+  }
+  
+  

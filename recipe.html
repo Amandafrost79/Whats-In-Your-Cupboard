@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's in Your Cupboard?!</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
-        body{
+        .recipe-details body{
             font-family: 'Arial';
             line-height: 1.6;
             margin: 0;
@@ -13,13 +14,14 @@
             background-color: #f8f8f8;
         }
         .recipe-details {
+            position: relative;
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             background-color: #ffffff47;
             box-shadow: 0 0 10px rgba(0, 0, 0, 1);
         }
-        h1 {
+        .recipe-details h1 {
             text-align: center;
             color: #a53939;
         }
@@ -32,6 +34,30 @@
             margin: 0;
             padding: 10;
         }
+        #recipeTitle {
+            font-size: 20px;
+        }
+        .like-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+
+        }
+        
+        .like-button:hover {
+            background-color: #ebeaea;
+            color: #c94129;
+        }
+
+        .like-button .heart-icon {
+            margin-right: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -39,9 +65,15 @@
 
 <div class="recipe-details">
     <h1>Recipe Details</h1>
+    <div id="recipeTitle"></div>
+    <div id="recipeImage"></div>
     <div id="ingredientList"></div>
     <div id="instructions"></div>
+    <button class="like-button" onclick="toggleFavorite('recipe Details', this)">
+        <span class="heart-icon">❤️</span> Like    
+    </button>
 </div>
+  
 
 
 <script src="script.js"></script>
