@@ -1,3 +1,4 @@
+
 //Recipe By Ingredients
 
 async function getRecipes() {
@@ -34,14 +35,21 @@ async function getRecipes() {
                         ingredientsText = 'No ingredients available';
                     }
 
-                    const ingredients = document.createElement('p');
-                    ingredients.textContent = `Ingredients: ${recipe.usedIngredients.map(ingredient => ingredient.name).join(', ')}`;
+                    const usedIngredients = recipe.usedIngredients.map(ingredient => ingredient.name).join(', ');
+                    const missedIngredients = recipe.missedIngredients.map(ingredient => ingredient.name).join(', ');
 
+                    const ingredients = document.createElement('p');
+                    ingredients.innerHTML = 
+                    `<strong>Used Ingredients:</strong> ${usedIngredients}<br>
+                    <strong>Missed Ingredients:</strong> ${missedIngredients || 'None'}<br>`;
+
+                    
                     recipeDiv.appendChild(title);
                     recipeDiv.appendChild(image);
                     recipeDiv.appendChild(ingredients);
                     recipeList.appendChild(recipeDiv);
                 }
+
             } else {
                 recipeList.innerHTML = 'No recipes found.';
             }
@@ -57,32 +65,50 @@ async function getRecipes() {
 
 //Recipe By Ingredients Display Page Recipe.HTML
 
-const urlParams = new URLSearchParams(window.location.search);
+async function fetchRecipeData() {
+    const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('id');
     const apiKey = '53e81641d3264b599390409e59595600';
-
-    
     const url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
 
-    async function fetchRecipeData() {
         try {
             const response = await fetch(url);
-            const data = await response.json(); 
+            const data = await response.json();
+            
+            const recipeDetails = {
+                id: data.id,
+                title: data.title,
+                image: data.image,
+            };
+
+            const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+
+            const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === recipeDetails.id);
+
+            if (recipeIndex === -1) {
+                
+                savedRecipes.push(recipeDetails);
+                localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+            }
 
             const recipeTitle = document.getElementById('recipeTitle');
             const recipeImage = document.getElementById('recipeImage');
             const ingredientList = document.getElementById('ingredientList');
             const instructions = document.getElementById('instructions');
+           
 
             recipeTitle.innerHTML = `<h2>${data.title}</h2>`;
 
             recipeImage.innerHTML = `<img src="${data.image}" alt="${data.title}" width="500px" height="300px">`;
             
             const ingredients = data.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('');
+
             ingredientList.innerHTML = `<h2>Ingredients:</h2><ul>${ingredients}</ul>`;
+
 
             instructions.innerHTML = `<h2>Instructions:</h2><p>${data.instructions || 'No instructions available'}</p>`;
 
+            
         } catch (error) {
             console.error('Error fetching data:', error);
             const recipeDetails = document.querySelector('.recipe-details');
@@ -98,7 +124,9 @@ const urlParams = new URLSearchParams(window.location.search);
 
 async function getRandomRecipe(mealType) {
     const apiKey = '53e81641d3264b599390409e59595600';
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`
+    let url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`;
+    
+
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -107,12 +135,19 @@ async function getRandomRecipe(mealType) {
         console.error('Error fetching data:', error);
     }
 }
-        
+
+//Display Random Recipe
+
 async function displayRandomRecipe(mealType) {
     const recipeDetails = document.getElementById('recipeDetails');
     const recipe = await getRandomRecipe(mealType);
-        
+
+
     if (recipe) {
+        const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+        savedRecipes.push(recipe);
+        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        
         recipeDetails.innerHTML = `
             <h2>${recipe.title}</h2>
             <img src="${recipe.image}" alt="${mealType}" width="600px" height="300px">
@@ -130,59 +165,67 @@ async function displayRandomRecipe(mealType) {
 window.onload = function() {
     const params = new URLSearchParams(window.location.search);
     const mealType = params.get('mealType');
-        
+
     if (mealType) {
         displayRandomRecipe(mealType);
     }
 };
 
-//Add favorites button
-function toggleFavorite(recipeTitle, button) {
-    let favorites = localStorage.getItem('favorites');
 
-    if (!favorites) {
-        favorites = [];
-    } else {
-        favorites = JSON.parse(favorites);
-    }
+// Function to toggle favorites
 
-    const recipeIndex = favorites.indexOf(recipeTitle);
-    if (recipeIndex === 1) {
-        favorites.push(recipeTitle);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+function toggleFavorite(recipeId, button) {
+    const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+    const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === recipeId);
+
+    if (recipeIndex === -1) {
+    
+        savedRecipes.push({ id: recipeId });
+        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
         button.classList.add('liked');
         button.innerHTML = '<span class="heart-icon">❤️</span> Liked';
         alert('Recipe liked!');
+
     } else {
-        favorites.splice(recipeIndex, 0);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+        
+        savedRecipes.splice(recipeIndex, 1);
+        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
         button.classList.remove('liked');
         button.innerHTML = '<span class="heart-icon">❤️</span> Like';
         alert('Recipe removed from favorites!');
     }
 }
 
+//Function to display recipes on favorites page
 
-function displayLikedRecipes() {
-    let likedRecipes = localStorage.getItem('favorites');
-     
-    if (likedRecipes) {
-        likedRecipes = JSON.parse(likedRecipes);
-        const likedRecipeList = document.getElementById('likedRecipeList');
+function displaySavedRecipes() {
+    const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+    const favoritesList = document.getElementById('favoritesList');
 
-        likedRecipeList.innerHTML = '';
+    if (savedRecipes.length > 0) {
+        favoritesList.innerHTML = ''; 
 
-        likedRecipes.forEach(function(recipe) {
+        savedRecipes.forEach(recipe => {
             const listItem = document.createElement('li');
-            listItem.textContent = recipe;
-            likedRecipeList.appendChild(listItem);
 
+            listItem.innerHTML = `
+                <h3>${recipe.title}</h3>
+                <a href="recipe.html?id=${recipe.id}">
+                    <img src="${recipe.image}" alt="${recipe.title}" width="200px" height="150px">
+                </a>
+                <p>Recipe ID: ${recipe.id}</p>
+            `;
+
+            favoritesList.appendChild(listItem);
         });
-    }     else {
-        document.getElementById('likedRecipeList').innerHTML = '<li>No liked recipes found</li>';
+    } else {
+        favoritesList.innerHTML = '<li>No saved recipes found</li>';
     }
 }
+displaySavedRecipes()
 
-displayLikedRecipes();
-    
-    
+
+
+
+
+
