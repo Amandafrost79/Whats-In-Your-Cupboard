@@ -81,14 +81,14 @@ async function fetchRecipeData() {
                 image: data.image,
             };
 
-            const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+            const storedRecipes = JSON.parse(localStorage.getItem('storedRecipes')) || [];
 
-            const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === recipeDetails.id);
+            const recipeIndex = storedRecipes.findIndex(recipe => recipe.id === recipeDetails.id);
 
             if (recipeIndex === -1) {
                 
-                savedRecipes.push(recipeDetails);
-                localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+                storedRecipes.push(recipeDetails);
+                localStorage.setItem('storedRecipes', JSON.stringify(storedRecipes));
             }
 
             const recipeTitle = document.getElementById('recipeTitle');
@@ -144,9 +144,9 @@ async function displayRandomRecipe(mealType) {
 
 
     if (recipe) {
-        const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
-        savedRecipes.push(recipe);
-        localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        const storedRecipes = JSON.parse(localStorage.getItem('storedRecipes')) || [];
+        storedRecipes.push(recipe);
+        localStorage.setItem('storedRecipes', JSON.stringify(storedRecipes));
         
         recipeDetails.innerHTML = `
             <h2>${recipe.title}</h2>
@@ -158,6 +158,7 @@ async function displayRandomRecipe(mealType) {
                 </ul>
             </div>
             <p>Instructions: ${recipe.instructions}</p>
+            
         `;
     }
 }
@@ -169,6 +170,7 @@ window.onload = function() {
     if (mealType) {
         displayRandomRecipe(mealType);
     }
+    
 };
 
 
@@ -221,6 +223,7 @@ function displaySavedRecipes() {
     } else {
         favoritesList.innerHTML = '<li>No saved recipes found</li>';
     }
+    
 }
 displaySavedRecipes()
 
