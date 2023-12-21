@@ -75,21 +75,8 @@ async function fetchRecipeData() {
             const response = await fetch(url);
             const data = await response.json();
             
-            const recipeDetails = {
-                id: data.id,
-                title: data.title,
-                image: data.image,
-            };
-
-            const storedRecipes = JSON.parse(localStorage.getItem('storedRecipes')) || [];
-
-            const recipeIndex = storedRecipes.findIndex(recipe => recipe.id === recipeDetails.id);
-
-            if (recipeIndex === -1) {
-                
-                storedRecipes.push(recipeDetails);
-                localStorage.setItem('storedRecipes', JSON.stringify(storedRecipes));
-            }
+            if (data) {
+                localStorage.setItem('currentRecipe', JSON.stringify(data));
 
             const recipeTitle = document.getElementById('recipeTitle');
             const recipeImage = document.getElementById('recipeImage');
@@ -107,12 +94,12 @@ async function fetchRecipeData() {
 
 
             instructions.innerHTML = `<h2>Instructions:</h2><p>${data.instructions || 'No instructions available'}</p>`;
-
-            
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            const recipeDetails = document.querySelector('.recipe-details');
-            recipeDetails.innerHTML = 'An error occurred while fetching data.';
+        
+         }   
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        const recipeDetails = document.querySelector('.recipe-details');
+        recipeDetails.innerHTML = 'An error occurred while fetching data.';
         }
     }
 
@@ -144,9 +131,8 @@ async function displayRandomRecipe(mealType) {
 
 
     if (recipe) {
-        const storedRecipes = JSON.parse(localStorage.getItem('storedRecipes')) || [];
-        storedRecipes.push(recipe);
-        localStorage.setItem('storedRecipes', JSON.stringify(storedRecipes));
+        
+        localStorage.setItem('currentRecipe', JSON.stringify(recipe));
         
         recipeDetails.innerHTML = `
             <h2>${recipe.title}</h2>
@@ -176,24 +162,26 @@ window.onload = function() {
 
 // Function to toggle favorites
 
-function toggleFavorite(recipeId, button) {
+function toggleFavorite() {
+    const currentRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
+    if (!currentRecipe) {
+        alert('No recipe is currently loaded.');
+        return;
+    }
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
-    const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === recipeId);
+    const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === currentRecipe.id);
+
 
     if (recipeIndex === -1) {
     
-        savedRecipes.push({ id: recipeId });
+        savedRecipes.push(currentRecipe);
         localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
-        button.classList.add('liked');
-        button.innerHTML = '<span class="heart-icon">❤️</span> Liked';
         alert('Recipe liked!');
 
     } else {
         
         savedRecipes.splice(recipeIndex, 1);
         localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
-        button.classList.remove('liked');
-        button.innerHTML = '<span class="heart-icon">❤️</span> Like';
         alert('Recipe removed from favorites!');
     }
 }
