@@ -170,18 +170,21 @@ function toggleFavorite() {
     }
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const recipeIndex = savedRecipes.findIndex(recipe => recipe.id === currentRecipe.id);
+    const likeButton = document.querySelector('.like-button');
 
 
     if (recipeIndex === -1) {
     
         savedRecipes.push(currentRecipe);
         localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
-        alert('Recipe liked!');
+        likeButton.innerHTML = `<span class="heart-icon">❤️</span> Liked`;
+        alert('Recipe added to favorites!');
 
     } else {
         
         savedRecipes.splice(recipeIndex, 1);
         localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        likeButton.innerHTML = `<span class="heart-icon">❤️</span> Like`;
         alert('Recipe removed from favorites!');
     }
 }
@@ -214,7 +217,6 @@ function displaySavedRecipes() {
     
 }
 displaySavedRecipes()
-
 
 
 
