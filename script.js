@@ -78,6 +78,7 @@ async function fetchRecipeData() {
             if (data) {
                 localStorage.setItem('currentRecipe', JSON.stringify(data));
 
+                
             const recipeTitle = document.getElementById('recipeTitle');
             const recipeImage = document.getElementById('recipeImage');
             const ingredientList = document.getElementById('ingredientList');
@@ -94,6 +95,8 @@ async function fetchRecipeData() {
 
 
             instructions.innerHTML = `<h2>Instructions:</h2><p>${data.instructions || 'No instructions available'}</p>`;
+
+            updateLikeButtonState();
         
          }   
     } catch (error) {
@@ -217,6 +220,21 @@ function displaySavedRecipes() {
     
 }
 displaySavedRecipes()
+
+
+function updateLikeButtonState() {
+    const currentRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
+    const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+    const likeButton = document.querySelector('.like-button');
+
+    if (currentRecipe && savedRecipes.some(recipe => recipe.id === currentRecipe.id)) {
+        likeButton.innerHTML = `<span class="heart-icon">❤️</span> Liked`;
+    } else {
+        likeButton.innerHTML = `<span class="heart-icon">❤️</span> Like`;
+    }
+}
+
+
 
 
 
