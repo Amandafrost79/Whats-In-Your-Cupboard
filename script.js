@@ -63,105 +63,65 @@ async function getRecipes() {
 }
 
 
-//Recipe By Ingredients Display Page Recipe.HTML
+//Recipe By Ingredients & Random Recipes Page: Recipe.HTML
 
 async function fetchRecipeData() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('id');
+    const mealType = urlParams.get('mealType');
     const apiKey = '53e81641d3264b599390409e59595600';
-    const url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
+    let url;
+
+    if (recipeId) {
+        url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;   
+    } else if (mealType) {
+        url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`;
+    } else {
+        console.error('No recipe ID or meal type provided');
+        return;
+    }
 
         try {
             const response = await fetch(url);
             const data = await response.json();
-            
-            if (data) {
-                localStorage.setItem('currentRecipe', JSON.stringify(data));
+            if (data.recipes) {
+            displayRecipe(data.recipes[0]);
+            } else {
+                displayRecipe(data);
+            }
 
-                
-            const recipeTitle = document.getElementById('recipeTitle');
-            const recipeImage = document.getElementById('recipeImage');
-            const ingredientList = document.getElementById('ingredientList');
-            const instructions = document.getElementById('instructions');
-           
-
-            recipeTitle.innerHTML = `<h2>${data.title}</h2>`;
-
-            recipeImage.innerHTML = `<img src="${data.image}" alt="${data.title}" width="500px" height="300px">`;
-            
-            const ingredients = data.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('');
-
-            ingredientList.innerHTML = `<h2>Ingredients:</h2><ul>${ingredients}</ul>`;
-
-
-            instructions.innerHTML = `<h2>Instructions:</h2><p>${data.instructions || 'No instructions available'}</p>`;
-
-            updateLikeButtonState();
-        
-         }   
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        const recipeDetails = document.querySelector('.recipe-details');
-        recipeDetails.innerHTML = 'An error occurred while fetching data.';
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-    }
+}  
 
-    fetchRecipeData();
+//Display Page for both functions
 
+function displayRecipe(recipe) {
+    const recipeTitle = document.getElementById('recipeTitle');
+    const recipeImage = document.getElementById('recipeImage');
+    const ingredientList = document.getElementById('ingredientList');
+    const instructions = document.getElementById('instructions');
 
+    recipeTitle.innerHTML = `<h2>${recipe.title}</h2>`;
 
-//Random Recipe Generator
+    recipeImage.innerHTML = `<img src="${recipe.image}" alt="${recipe.title}" width="500px" height="300px">`;
 
-async function getRandomRecipe(mealType) {
-    const apiKey = '53e81641d3264b599390409e59595600';
-    let url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`;
-    
+    const ingredients = recipe.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('');
+    ingredientList.innerHTML = `<h3>Ingredients:</h3><ul>${ingredients}</ul>`;
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.recipes[0];
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+    const recipeInstructions = recipe.instructions || 'No instructions available';
+    instructions.innerHTML = `<h3>Instructions:</h3><p>${recipeInstructions}</p>`;
+
+    localStorage.setItem('currentRecipe', JSON.stringify(recipe));
+
+    updateLikeButton();
 }
 
-//Display Random Recipe
-
-async function displayRandomRecipe(mealType) {
-    const recipeDetails = document.getElementById('recipeDetails');
-    const recipe = await getRandomRecipe(mealType);
-
-
-    if (recipe) {
-        
-        localStorage.setItem('currentRecipe', JSON.stringify(recipe));
-        
-        recipeDetails.innerHTML = `
-            <h2>${recipe.title}</h2>
-            <img src="${recipe.image}" alt="${mealType}" width="600px" height="300px">
-            <div class="Ingredients">
-                <h3>Ingredients:</h3>
-                <ul>
-                    ${recipe.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('')}
-                </ul>
-            </div>
-            <p>Instructions: ${recipe.instructions}</p>
-            
-        `;
-    }
-}
-        
 window.onload = function() {
-    const params = new URLSearchParams(window.location.search);
-    const mealType = params.get('mealType');
-
-    if (mealType) {
-        displayRandomRecipe(mealType);
-    }
-    
+    fetchRecipeData();
 };
-
+    
 
 // Function to toggle favorites
 
@@ -221,8 +181,9 @@ function displaySavedRecipes() {
 }
 displaySavedRecipes()
 
+//Function to update like button
 
-function updateLikeButtonState() {
+function updateLikeButton() {
     const currentRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const likeButton = document.querySelector('.like-button');
