@@ -1,4 +1,4 @@
-/* Header CSS*/
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -19,7 +19,6 @@ body {
 
 header {
     background: white;
-    background-image: url("images/pasta.jpeg");
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,6 +37,7 @@ nav {
     left: 0;
     right: 0;
     height: 90px;
+    z-index: 1000;
 
 }
 
@@ -57,6 +57,7 @@ nav {
 .page-five {
     background-image: url("images/1438964284641.jpeg");
 }
+
 
 .logo a {
     background-image: url("images/logo.png");
@@ -94,6 +95,7 @@ nav {
 .navbar li a {
     text-decoration: none;
     color: #333;
+    transition: color 0.3s ease;
 }
 
 .navbar li a:hover {
@@ -120,22 +122,11 @@ nav {
 @media (max-width: 670px) {
     .navbar li {
         margin: 3px;
-        width: fit-content;
+        /* width: fit-content; */
         padding: 2px;
     }
 }
  
-
-/*Body CSS*/
-button {
-    background-color: rgb(174, 190, 202);
-    font-size: large;
-    border-radius: 20px;
-    width: 150px;
-    height: 50px;
-    text-decoration: none;
-    box-shadow: 5px 5px 5px;
-}
 
 section {
     background: white;
@@ -146,12 +137,10 @@ section {
 }
 
 section.intro {
-    text-align: center;
-    background-color: white;
     font-weight: bold;
     font-size: large;
-    
 }
+
 section.intro h1 {
     font-size: xx-large;
     font-style: italic;
@@ -166,6 +155,17 @@ section.ingredients {
     background-size: 100%;
     height: 200px;
     font-size: x-large;
+}
+
+button.ingredients-button {
+    color: white;
+    background-color: #BF2424;
+    font-size: large;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border: 3px solid white;
+    
 }
 
 section.meals_intro {
@@ -251,15 +251,74 @@ div.ingredients_list  {
 
 div.ingredients_list input {
     text-align: center;
-    width: 75%;
-}
-div.ingredients_list span {
-    font-size: ;
+    width: 60%;
 }
 
-.btn {
+
+.search-button {
     background-color: #ed8b60;
     color: black;
+    border-radius: 10px;
+    font-size: large;
+    width: 100px;
+    height: 40px;
+    border: 2px solid black;
+}
+
+
+/*Ingredients Display Page*/
+.recipe-details body{ 
+    font-family: 'Arial';
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+.recipe-details {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff47;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+.recipe-details h1 {
+    text-align: center;
+    color: #a53939;
+}
+#ingredientList, #instructions {
+    text-align: left;
+    margin-bottom: 20px;
+}
+#ingredientList ul, #instructions ol {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    padding: 10;
+}
+#recipeTitle {
+    font-size: 20px;
+}
+.like-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.like-button:hover {
+    background-color: #ebeaea;
+    color: #c94129;
+}
+
+.like-button .heart-icon {
+    margin-right: 5px;
 }
 
 
@@ -271,10 +330,3 @@ div.ingredients_list span {
     margin: 0; 
 }
 
-
-
-
-
-
-
-  

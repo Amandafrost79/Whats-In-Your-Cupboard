@@ -102,6 +102,7 @@ function displayRecipe(recipe) {
     const recipeImage = document.getElementById('recipeImage');
     const ingredientList = document.getElementById('ingredientList');
     const instructions = document.getElementById('instructions');
+    
 
     recipeTitle.innerHTML = `<h2>${recipe.title}</h2>`;
 
