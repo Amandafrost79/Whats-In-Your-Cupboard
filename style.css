@@ -7,7 +7,7 @@ h1 {
 }
 
 body {
-    background: #fcf8f8;
+    background: #f8f8f8;
     color: rgb(55, 19, 19);
     font-family: Arial, Helvetica, sans-serif;
     margin: auto;
@@ -22,7 +22,7 @@ header {
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 400px;
     padding: 20px;
     text-align: center;
 }
@@ -43,19 +43,26 @@ nav {
 
 
 .page-one {
-    background-image: url("images/pasta.jpeg");
+    background-image: url("images/pexels-photo-1640772.jpeg");
+    background-attachment: fixed;
 }
 .page-two {
-    background-image: url("images/pickles-feat.webp");
+    background-image: url("images/free-photo-of-a-bunch-of-vegetables-and-sourdough-bread.jpeg");
+    background-attachment: fixed;
+    
 }
 .page-three {
-    background-image: url("images/spread.jpeg");
+    background-image: url("images/pexels-photo-2347311.webp");
+    background-attachment: fixed;
 }
 .page-four {
-    background-image: url("images/smash-burger-tacos-feat.webp");
+    background-image: url("images/pexels-photo-1640770.jpeg");
+    background-attachment: fixed;
 }
 .page-five {
-    background-image: url("images/1438964284641.jpeg");
+    background-image: url("images/pexels-photo-5971864.jpeg");
+    background-attachment: fixed;
+    
 }
 
 

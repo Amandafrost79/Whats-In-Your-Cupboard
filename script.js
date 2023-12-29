@@ -119,9 +119,9 @@ function displayRecipe(recipe) {
     updateLikeButton();
 }
 
-window.onload = function() {
-    fetchRecipeData();
-};
+// window.onload = function() {
+//     fetchRecipeData();
+// };
     
 
 // Function to toggle favorites
@@ -170,7 +170,6 @@ function displaySavedRecipes() {
                 <a href="recipe.html?id=${recipe.id}">
                     <img src="${recipe.image}" alt="${recipe.title}" width="200px" height="150px">
                 </a>
-                <p>Recipe ID: ${recipe.id}</p>
             `;
 
             favoritesList.appendChild(listItem);
@@ -180,7 +179,7 @@ function displaySavedRecipes() {
     }
     
 }
-displaySavedRecipes()
+// displaySavedRecipes()
 
 //Function to update like button
 
@@ -195,6 +194,11 @@ function updateLikeButton() {
         likeButton.innerHTML = `<span class="heart-icon">❤️</span> Like`;
     }
 }
+
+window.onload = function() {
+    fetchRecipeData();
+    displaySavedRecipes();
+};
 
 
 
