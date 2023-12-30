@@ -118,10 +118,6 @@ function displayRecipe(recipe) {
 
     updateLikeButton();
 }
-
-// window.onload = function() {
-//     fetchRecipeData();
-// };
     
 
 // Function to toggle favorites
