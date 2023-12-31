@@ -6,8 +6,8 @@ function addIngredient() {
     newIngredient.classList.add('ingredientInput');
     newIngredient.innerHTML = `
         <input type="text" class="ingredient">
-        <button type="button" onclick="addIngredient()">+</button>
-        <button type="button" onclick="removeIngredient(this)">-</button>
+        <button class="add" type="button" onclick="addIngredient()">+</button>
+        <button class="remove" type="button" onclick="removeIngredient(this)">-</button>
     `;
     container.appendChild(newIngredient);
 }

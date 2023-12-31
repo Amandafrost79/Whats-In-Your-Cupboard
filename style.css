@@ -126,11 +126,15 @@ nav {
     }
 } 
 @media (max-width: 740px) { 
-    .navbar li {
+    
+
+        .navbar li {
         margin: 3px;
         width: fit-content;
         padding: 2px;
     }
+    
+
 }
 
  
@@ -273,7 +277,15 @@ div.ingredients_list input {
     text-align: center;
     width: 60%;
 }
+#ingredientsContainer button.add {
+    background-color: #fb8c00;
+    color: white;
+}
 
+#ingredientsContainer button.remove {
+    background-color: #BF2424;
+    color: white;
+}
 
 .search-button {
     background-color: #fb8c00;
@@ -372,4 +384,11 @@ h1.favorite {
 }
     
 
-
+#recipeList a{
+    text-decoration: none;
+    color: #BF2424;
+}
+#recipeList a:hover{
+    text-decoration: underline;
+    color: #fb8c00;
+}
