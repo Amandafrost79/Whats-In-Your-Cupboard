@@ -1,10 +1,36 @@
+//Add & Remove Ingredients
+
+function addIngredient() {
+    const container = document.getElementById('ingredientsContainer');
+    const newIngredient = document.createElement('div');
+    newIngredient.classList.add('ingredientInput');
+    newIngredient.innerHTML = `
+        <input type="text" class="ingredient">
+        <button type="button" onclick="addIngredient()">+</button>
+        <button type="button" onclick="removeIngredient(this)">-</button>
+    `;
+    container.appendChild(newIngredient);
+}
+
+function removeIngredient(button) {
+    const container = document.getElementById('ingredientsContainer');
+    if (container.children.length > 1) {
+        button.parentElement.remove();
+    } else {
+        alert('At least one ingredient is required.');
+    }
+}
 
 //Recipe By Ingredients
 
 async function getRecipes() {
     const apiKey = '53e81641d3264b599390409e59595600';
-    const input = document.getElementById('ingredientInput').value;
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${input}&number=2&apiKey=${apiKey}`;
+    
+    const inputs = document.querySelectorAll('.ingredient');
+    const ingredients = Array.from(inputs).map(input => input.value.trim()).filter(value => value.length > 0);
+
+    const inputString = ingredients.join(',');
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${inputString}&number=2&apiKey=${apiKey}`;
 
         try {
             const response = await fetch(url);
@@ -53,7 +79,7 @@ async function getRecipes() {
             } else {
                 recipeList.innerHTML = 'No recipes found.';
             }
-            document.getElementById('ingredientInput').value = '';
+            
         }
         catch (error) {
             console.error('Error fetching data:', error);
@@ -175,7 +201,6 @@ function displaySavedRecipes() {
     }
     
 }
-// displaySavedRecipes()
 
 //Function to update like button
 

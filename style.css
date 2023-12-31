@@ -1,5 +1,6 @@
 
 h1 {
+    font-size: 2.5em;
     text-align: center;
     margin-bottom: 20px;
     color: #BF2424;
@@ -7,9 +8,10 @@ h1 {
 }
 
 body {
-    background: #f8f8f8;
+    background-color: rgb(244, 239, 232);
     color: rgb(55, 19, 19);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', arial, sans-serif;
+    line-height: 1.6;
     margin: auto;
     padding: 0px;
     text-align: center;
@@ -18,12 +20,12 @@ body {
 }
 
 header {
-    background: white;
+    background: rgb(244, 239, 232);
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     height: 400px;
-    padding: 20px;
+    padding: 0px;
     text-align: center;
 }
 
@@ -36,7 +38,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    height: 90px;
+    height: 100px;
     z-index: 1000;
 
 }
@@ -44,24 +46,19 @@ nav {
 
 .page-one {
     background-image: url("images/pexels-photo-5848508.jpeg");
-    background-attachment: fixed;
 }
 .page-two {
     background-image: url("images/free-photo-of-a-bunch-of-vegetables-and-sourdough-bread.jpeg");
-    background-attachment: fixed;
     
 }
 .page-three {
     background-image: url("images/pexels-photo-2347311.webp");
-    background-attachment: fixed;
 }
 .page-four {
     background-image: url("images/pexels-photo-1640770.jpeg");
-    background-attachment: fixed;
 }
 .page-five {
     background-image: url("images/pexels-photo-5971864.jpeg");
-    background-attachment: fixed;
     
 }
 
@@ -89,9 +86,8 @@ nav {
     margin-right: 40px;
     display: inline-block;
     margin-right: 20px;
-    padding: 35px;
-    width: 110px;
-    background-color: whitesmoke;
+    width: 100px;
+    background-color: rgb(212, 211, 211);
     padding: 5px;
     margin-left: 10px;
     text-align: center;
@@ -106,10 +102,13 @@ nav {
 }
 
 .navbar li a:hover {
-    color: #BF2424; 
- }
+    color: #d90808; 
+}
 
- @media (max-width: 1000px) {
+ 
+
+
+@media (max-width: 1000px) {
     .navbar {
         flex-wrap: wrap;
         font-size: small;
@@ -125,78 +124,92 @@ nav {
         top: 10;
         margin-left: 10px;
     }
- }
-@media (max-width: 670px) {
+} 
+@media (max-width: 740px) { 
     .navbar li {
         margin: 3px;
-        /* width: fit-content; */
+        width: fit-content;
         padding: 2px;
     }
 }
+
  
 
 section {
-    background: white;
-    color: rgb(25, 24, 24);
+    background: whitesmoke;
+    color: #191818;
     padding: 20px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
 section.intro {
     font-weight: bold;
-    font-size: large;
+    font-size: 1.5em;
+    color: #333333;
 }
 
 section.intro h1 {
-    font-size: xx-large;
-    font-style: italic;
+    font-family: Georgia;
+    font-size: 2em;
+    font-style: normal;
     font-weight: bolder;
+    color: #BF2424;
 }
 
 section.ingredients {
-    color: white;
+    color: #FFF;
     background-image: url("images/r-ingredients.webp");
     background-repeat: no-repeat;
     text-align: center;
-    background-size: 100%;
-    height: 200px;
-    font-size: x-large;
+    background-size: cover;
+    height: 250px;
+    font-size: 1.5em;
 }
 
 button.ingredients-button {
     color: white;
     background-color: #BF2424;
-    font-size: large;
-    border-radius: 10px;
-    width: 150px;
-    height: 40px;
-    border: 3px solid white;
+    font-size: 1.1em;
+    border-radius: 15px;
+    width: 250px;
+    height: 60px;
+    border: 2px solid white;
+    cursor: pointer;
     
 }
 
 section.meals_intro {
-    font-style: italic;
-    font-size: medium;
+    font-size: 1em;
+    color: #585858;
 }
 
 section.meals {
-    background-color: white;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 15px 0;
 }
 
 section.meals figure {
-    margin: auto;
+    margin: 10px;
     text-align: center;
 }
 
 section.meals figure img {
-    border-radius: 10%;
+    border-radius: 15%;
 }
 
-@media (max-width: 800px) {
+section.meals figure a{
+    font-size: 1.5em;
+    color: black;
+    text-decoration: none;
+
+}
+
+@media (max-width: 1000px) {
     section.meals {
         flex-direction: column;
     }
@@ -356,5 +369,7 @@ h1.favorite {
     padding: 0;
     margin: 0; 
     font-size: 20px;
+}
     
+
 

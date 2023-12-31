@@ -32,19 +32,21 @@
         <P>What do you have on hand?</P>
         <p>List what you have and we'll do the rest!</p>
     </div>
-    
-    
+
     <div class="ingredients_list">
-        <label for="ingredientInput">Enter ingredients, seperated by a comma:</label>
-        <input type="text" id="ingredientInput">
+        <label>Enter ingredients:</label>
+        <div id="ingredientsContainer">
+            <div class="ingredientInput">
+                <input type="text" class="ingredient">
+                <button type="button" onclick="addIngredient()">+</button>
+                <button type="button" onclick="removeIngredient(this)">-</button>
+            </div>
+        </div>
         <br>
         <button class="search-button" onclick="getRecipes()">Search</button>
-        <br>
-        <br>
+        <br><br>
         <div id="recipeList"></div>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
     </div>
     
     <script src="script.js"></script>
