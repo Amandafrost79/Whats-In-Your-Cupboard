@@ -132,7 +132,7 @@ function displayRecipe(recipe) {
 
     recipeTitle.innerHTML = `<h2>${recipe.title}</h2>`;
 
-    recipeImage.innerHTML = `<img src="${recipe.image}" alt="${recipe.title}" width="500px" height="300px">`;
+    recipeImage.innerHTML = `<img class="recipePic" src="${recipe.image}" alt="${recipe.title}" width="500px" height="300px">`;
 
     const ingredients = recipe.extendedIngredients.map(ingredient => `<li>${ingredient.original}</li>`).join('');
     ingredientList.innerHTML = `<h3>Ingredients:</h3><ul>${ingredients}</ul>`;
@@ -190,7 +190,7 @@ function displaySavedRecipes() {
             listItem.innerHTML = `
                 <h3>${recipe.title}</h3>
                 <a href="recipe.html?id=${recipe.id}">
-                    <img src="${recipe.image}" alt="${recipe.title}" width="200px" height="150px">
+                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="200px" height="150px">
                 </a>
             `;
 
