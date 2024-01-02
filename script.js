@@ -1,3 +1,5 @@
+const apiKey = '53e81641d3264b599390409e59595600';
+
 //Add & Remove Ingredients
 
 function addIngredient() {
@@ -24,7 +26,6 @@ function removeIngredient(button) {
 //Recipe By Ingredients
 
 async function getRecipes() {
-    const apiKey = '53e81641d3264b599390409e59595600';
     
     const inputs = document.querySelectorAll('.ingredient');
     const ingredients = Array.from(inputs).map(input => input.value.trim()).filter(value => value.length > 0);
@@ -95,7 +96,7 @@ async function fetchRecipeData() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('id');
     const mealType = urlParams.get('mealType');
-    const apiKey = '53e81641d3264b599390409e59595600';
+    
     let url;
 
     if (recipeId) {
@@ -190,7 +191,7 @@ function displaySavedRecipes() {
             listItem.innerHTML = `
                 <h3>${recipe.title}</h3>
                 <a href="recipe.html?id=${recipe.id}">
-                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="200px" height="150px">
+                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="300px" height="200px">
                 </a>
             `;
 
