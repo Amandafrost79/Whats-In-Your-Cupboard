@@ -100,31 +100,44 @@ async function fetchRecipeData() {
     let url;
 
     if (recipeId) {
-        url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;   
+        url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            displayRecipe(data, null, false);  // Pass false for isRandom
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+           
     } else if (mealType) {
         url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            displayRecipe(data.recipes[0], mealType, true);  // Pass true for isRandom
+        } catch (error) {
+            console.error('Error fetching new recipe:', error);
+        }
     } else {
         console.error('No recipe ID or meal type provided');
         return;
     }
-
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            if (data.recipes) {
-            displayRecipe(data.recipes[0]);
-            } else {
-                displayRecipe(data);
-            }
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
 }  
+
+async function shuffleRecipe(mealType) {
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&type=' + mealType : ''}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayRecipe(data.recipes[0], mealType, true);
+    } catch (error) {
+        console.error('Error fetching new recipe:', error);
+    }
+}
 
 //Display Page for both functions
 
-function displayRecipe(recipe) {
+function displayRecipe(recipe, mealType, isRandom) {
     const recipeTitle = document.getElementById('recipeTitle');
     const recipeImage = document.getElementById('recipeImage');
     const ingredientList = document.getElementById('ingredientList');
@@ -144,6 +157,19 @@ function displayRecipe(recipe) {
     localStorage.setItem('currentRecipe', JSON.stringify(recipe));
 
     updateLikeButton();
+
+    let shuffleButton = document.getElementById('shuffleButton');
+
+    if (!shuffleButton) {
+        shuffleButton = document.createElement('button');
+        shuffleButton.textContent = 'Try Again';
+        shuffleButton.id = 'shuffleButton';
+        shuffleButton,style.display = 'none';
+        document.body.appendChild(shuffleButton);
+    }
+
+    shuffleButton.onclick = () => shuffleRecipe(mealType);
+    shuffleButton.style.display = isRandom ? 'block' : 'none';
 }
     
 

@@ -373,7 +373,23 @@ div.ingredients_list input {
     margin-right: 5px;
 }
 
+#shuffleButton {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
+#shuffleButton:hover {
+    background-color: #3bd148;
+}
 
 /* Favorites page */
 h1.favorite {
