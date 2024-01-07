@@ -1,6 +1,6 @@
-const apiKey = '53e81641d3264b599390409e59595600';
+const apiKey = 'e8d16b2bccde4b5b85e8739327d12742';
 
-//Add & Remove Ingredients
+//Functions to Add & Remove Ingredients
 
 function addIngredient() {
     const container = document.getElementById('ingredientsContainer');
@@ -23,7 +23,7 @@ function removeIngredient(button) {
     }
 }
 
-//Recipe By Ingredients
+//Function to get Recipe By Ingredients
 
 async function getRecipes() {
     
@@ -31,7 +31,7 @@ async function getRecipes() {
     const ingredients = Array.from(inputs).map(input => input.value.trim()).filter(value => value.length > 0);
 
     const inputString = ingredients.join(',');
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${inputString}&number=2&apiKey=${apiKey}`;
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${inputString}&number=5&apiKey=${apiKey}`;
 
         try {
             const response = await fetch(url);
@@ -89,8 +89,7 @@ async function getRecipes() {
         }
 }
 
-
-//Recipe By Ingredients & Random Recipes Page: Recipe.HTML
+//Function to get Recipes by Ingredients & Random
 
 async function fetchRecipeData() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -98,7 +97,7 @@ async function fetchRecipeData() {
     const mealType = urlParams.get('mealType');
     
     let url;
-
+    
     if (recipeId) {
         url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
         try {
@@ -117,12 +116,12 @@ async function fetchRecipeData() {
             displayRecipe(data.recipes[0], mealType, true);  // Pass true for isRandom
         } catch (error) {
             console.error('Error fetching new recipe:', error);
+            
         }
-    } else {
-        console.error('No recipe ID or meal type provided');
-        return;
     }
-}  
+} 
+
+//Shuffle Function for Random Recipes
 
 async function shuffleRecipe(mealType) {
     const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&type=' + mealType : ''}`;
@@ -135,7 +134,7 @@ async function shuffleRecipe(mealType) {
     }
 }
 
-//Display Page for both functions
+//Function to Display all Recipes Fetched
 
 function displayRecipe(recipe, mealType, isRandom) {
     const recipeTitle = document.getElementById('recipeTitle');
@@ -143,7 +142,6 @@ function displayRecipe(recipe, mealType, isRandom) {
     const ingredientList = document.getElementById('ingredientList');
     const instructions = document.getElementById('instructions');
     
-
     recipeTitle.innerHTML = `<h2>${recipe.title}</h2>`;
 
     recipeImage.innerHTML = `<img class="recipePic" src="${recipe.image}" alt="${recipe.title}" width="500px" height="300px">`;
@@ -171,9 +169,9 @@ function displayRecipe(recipe, mealType, isRandom) {
     shuffleButton.onclick = () => shuffleRecipe(mealType);
     shuffleButton.style.display = isRandom ? 'block' : 'none';
 }
-    
 
-// Function to toggle favorites
+
+// Function to Toggle Favorites
 
 function toggleFavorite() {
     const currentRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
@@ -202,13 +200,13 @@ function toggleFavorite() {
     }
 }
 
-//Function to display recipes on favorites page
+//Function to Display Recipes on Favorites Page
 
 function displaySavedRecipes() {
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const favoritesList = document.getElementById('favoritesList');
-
-    if (savedRecipes.length > 0) {
+    console.log(favoritesList);
+    if (favoritesList && savedRecipes.length > 0) {
         favoritesList.innerHTML = ''; 
 
         savedRecipes.forEach(recipe => {
@@ -220,16 +218,18 @@ function displaySavedRecipes() {
                     <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="300px" height="200px">
                 </a>
             `;
-
+            
             favoritesList.appendChild(listItem);
         });
     } else {
+        if (favoritesList) {
         favoritesList.innerHTML = '<li>No saved recipes found</li>';
+        }
     }
-    
 }
 
-//Function to update like button
+
+//Function to Update Like Button
 
 function updateLikeButton() {
     const currentRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
@@ -247,8 +247,6 @@ window.onload = function() {
     fetchRecipeData();
     displaySavedRecipes();
 };
-
-
 
 
 
