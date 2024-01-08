@@ -99,10 +99,14 @@ nav {
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease;
+    position: relative;
 }
+
 
 .navbar li a:hover {
     color: #d90808; 
+    transform: scale(1.1);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
  
@@ -152,7 +156,7 @@ nav {
  
 
 section {
-    background: whitesmoke;
+    background: ;
     color: #191818;
     padding: 20px;
     text-align: center;
@@ -184,7 +188,7 @@ section.ingredients {
     font-size: 1.5em;
 }
 
-button.ingredients-button {
+.ingredients-button {
     color: white;
     background-color: #BF2424;
     font-size: 1.1em;
@@ -193,41 +197,120 @@ button.ingredients-button {
     height: 60px;
     border: 2px solid white;
     cursor: pointer;
-    
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, #BF2424 50%, #FFFFFF 50%);
+    transition: background-position 0.5s, color 0.5s;
 }
 
-section.meals_intro {
-    font-size: 1em;
-    color: #585858;
+
+.ingredients-button:hover {
+    background-position: -100% 0;
+    color: #BF2424;
 }
 
-section.meals {
-    background-color: whitesmoke;
+
+
+.meals_intro {
+    text-align: center; 
+    padding: 40px 20px; 
+    background-color: #f8f8f8; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px; 
+}
+
+.meals_intro h1, .meals_intro h2 {
+    margin: 10px 0; 
+    color: #333; 
+    font-family: 'Arial', sans-serif; 
+}
+
+.meals_intro h1 {
+    font-size: 3.5em; 
+    color: #BF2424; 
+    font-weight: bold; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.meals_intro h2 {
+    font-size: 1.5em; 
+}
+
+
+@media (max-width: 768px) {
+    .meals_intro {
+        padding: 20px 10px; 
+    }
+    .meals_intro h1 {
+        font-size: 2em; 
+    }
+    .meals_intro h2 {
+        font-size: 1.2em; 
+    }
+}
+
+.meals {
+    background-color: ;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 15px 0;
 }
 
-section.meals figure {
+.meals figure {
     margin: 10px;
     text-align: center;
 }
 
-section.meals figure img {
-    border-radius: 15%;
+.meals figure img {
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
 }
 
-section.meals figure a{
+.meals figure a{ 
     font-size: 1.5em;
     color: black;
     text-decoration: none;
+    overflow: hidden;
+    position: relative;
+   
+}
+.meals figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    background-color: #f38703;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
 
+.meals figure:hover img {
+    transform: scale(1.1);
+}
+
+.meals figure:hover figcaption {
+    transform: translateY(0);
 }
 
 @media (max-width: 1000px) {
-    section.meals {
+    .meals {
         flex-direction: column;
+        align-items: center;
+    }
+    .meals figure {
+        margin: 10px 0 90px 0;
+        width: 80%;
+    }
+    .meals figure img {
+        width: 100%;
+        height: auto;
+    }
+    .meals figcaption {
+        border-radius: 0 0 15px 15px;
     }
 }
 
@@ -278,63 +361,104 @@ input[type="submit"]:hover {
 
 
 /*Ingredients Page CSS*/
+
+.ingredients_intro h1, .ingredients_intro h2, .ingredients_intro h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.ingredients_intro h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+.ingredients_intro h2 {
+    color: #555;
+    font-size: 1.8em;
+}
+
+.ingredients_intro h3 {
+    color: #e3e0e0;
+    font-size: 1.2em;
+}
+
 div.ingredients_list  {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 
 div.ingredients_list input {
     text-align: center;
-    width: 60%;
+    width: 160px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px 0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+div.ingredients_list input:focus {
+    border-color: #BF2424;
+    outline: none;
 }
 #ingredientsContainer button.add {
     background-color: #fb8c00;
     color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    
 }
 
 #ingredientsContainer button.remove {
     background-color: #BF2424;
     color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+}
+#ingredientsContainer button.add:hover, #ingredientsContainer button.remove:hover {
+    background-color: #aba8a8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .search-button {
     background-color: #fb8c00;
     color: white;
-    border-radius: 15px;
+    border-radius: 4px;
     font-size: large;
     width: 150px;
     font-size: large;
     height: 40px;
-    border: 4px solid #c94129;
+    /* border: 4px solid #c94129; */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 5px 10px;
+    border: none;;
 }
 .search-button:hover {
     background-color: #ffa726;
     color: #c94129;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 /*Ingredients Display Page*/
-.recipe-details body{ 
-    font-family: 'Lato', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #fff5e6;
-}
+
 .recipe-details {
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-}
-.recipe-details h1 {
-    text-align: center;
-    color: #a53939;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
 }
 #ingredientList, #instructions {
     text-align: left;
@@ -346,9 +470,22 @@ div.ingredients_list input {
     margin: 0;
     padding: 20px;
     list-style-type: square;
+    padding-left: 40px;
+    line-height: 1.6;
+}
+#ingredientList ul li:before, #instructions ol li:before {
+    content: '•'; 
+    color: #ffa726; 
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 #recipeTitle {
     font-size: 30px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    letter-spacing: 1px; 
 }
 .recipePic {
     max-width: 100%;
@@ -356,6 +493,11 @@ div.ingredients_list input {
     border-radius: 8px;
     border: 1px solid gray;
     box-shadow: 0 0 10px black;
+}
+.recipePic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .like-button {
@@ -370,13 +512,15 @@ div.ingredients_list input {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 8px rgba(o, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
 
 }
 
 .like-button:hover {
     background-color: #fb8c00;
     color: #c94129;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .like-button .heart-icon {
@@ -395,10 +539,13 @@ div.ingredients_list input {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 4px 8px rgba(o, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 #shuffleButton:hover {
     background-color: #3bd148;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Favorites page */
@@ -418,6 +565,11 @@ h1.favorite {
     border-radius: 8px;
     border: 1px solid gray;
     box-shadow: 0 0 10px black;
+}
+.favpic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
     
 
