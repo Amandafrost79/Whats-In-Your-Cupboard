@@ -170,6 +170,19 @@ function displayRecipe(recipe, mealType, isRandom) {
     shuffleButton.style.display = isRandom ? 'block' : 'none';
 }
 
+function getFoodTrivia() {
+    const triviaUrl = `https://api.spoonacular.com/food/trivia/random?apiKey=${apiKey}`;
+
+fetch(triviaUrl)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('triviaDisplay').innerText = data.text;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+}
 
 // Function to Toggle Favorites
 
@@ -213,9 +226,9 @@ function displaySavedRecipes() {
             const listItem = document.createElement('li');
 
             listItem.innerHTML = `
-                <h3>${recipe.title}</h3>
+                <h2>${recipe.title}</h2>
                 <a href="recipe.html?id=${recipe.id}">
-                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="300px" height="200px">
+                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="400px" height="250px">
                 </a>
             `;
             
