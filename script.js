@@ -228,7 +228,7 @@ function displaySavedRecipes() {
             listItem.innerHTML = `
                 <h2>${recipe.title}</h2>
                 <a href="recipe.html?id=${recipe.id}">
-                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="400px" height="250px">
+                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="350px" height="250px">
                 </a>
             `;
             
