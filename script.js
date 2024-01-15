@@ -37,6 +37,7 @@ async function getRecipes() {
             const response = await fetch(url);
             const data = await response.json();
             const recipeList = document.getElementById('recipeList');
+
             recipeList.innerHTML = '';
 
             if (data && data.length > 0) {
@@ -44,16 +45,19 @@ async function getRecipes() {
                     const recipeDiv = document.createElement('div');
                     recipeDiv.classList.add('recipe-item');
 
+                    const recipeLink = document.createElement('a');
+                    recipeLink.href = `recipe.html?id=${recipe.id}`;
+
                     const title = document.createElement('h3');
-                    const link = document.createElement('a');
-                    link.href = `recipe.html?id=${recipe.id}`;
-                    link.textContent = recipe.title;
-                    title.appendChild(link);
+                    title.textContent = recipe.title;
 
                     const image = document.createElement('img');
                     image.src = recipe.image;
                     image.alt = recipe.title;
                     image.width = 400;
+
+                    recipeLink.appendChild(title);
+                    recipeLink.appendChild(image);
 
                     let ingredientsText = '';
                     if (recipe.usedIngredients && recipe.usedIngredients.length > 0) {
@@ -70,9 +74,7 @@ async function getRecipes() {
                     `<strong>Used Ingredients:</strong> ${usedIngredients}<br>
                     <strong>Missed Ingredients:</strong> ${missedIngredients || 'None'}<br>`;
 
-                    
-                    recipeDiv.appendChild(title);
-                    recipeDiv.appendChild(image);
+                    recipeDiv.appendChild(recipeLink);
                     recipeDiv.appendChild(ingredients);
                     recipeList.appendChild(recipeDiv);
                 }
@@ -103,7 +105,7 @@ async function fetchRecipeData() {
         try {
             const response = await fetch(url);
             const data = await response.json();
-            displayRecipe(data, null, false);  // Pass false for isRandom
+            displayRecipe(data, null, false); 
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -124,7 +126,7 @@ async function fetchRecipeData() {
 //Shuffle Function for Random Recipes
 
 async function shuffleRecipe(mealType) {
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&type=' + mealType : ''}`;
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&type=' + mealType:''}`;
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -169,6 +171,8 @@ function displayRecipe(recipe, mealType, isRandom) {
     shuffleButton.onclick = () => shuffleRecipe(mealType);
     shuffleButton.style.display = isRandom ? 'block' : 'none';
 }
+
+//Trivia Function
 
 function getFoodTrivia() {
     const triviaUrl = `https://api.spoonacular.com/food/trivia/random?apiKey=${apiKey}`;
@@ -218,7 +222,7 @@ function toggleFavorite() {
 function displaySavedRecipes() {
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const favoritesList = document.getElementById('favoritesList');
-    console.log(favoritesList);
+    
     if (favoritesList && savedRecipes.length > 0) {
         favoritesList.innerHTML = ''; 
 
@@ -228,7 +232,7 @@ function displaySavedRecipes() {
             listItem.innerHTML = `
                 <h2>${recipe.title}</h2>
                 <a href="recipe.html?id=${recipe.id}">
-                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="350px" height="250px">
+                    <img class="favpic" src="${recipe.image}" alt="${recipe.title}" width="300px" height="200px">
                 </a>
             `;
             

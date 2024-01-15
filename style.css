@@ -73,7 +73,7 @@ nav {
     height: 115px;
     position: relative;
     top: -20px;
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .navbar {
     list-style: none;
@@ -83,13 +83,13 @@ nav {
     padding: 40px;
 }
 .navbar li {
-    margin-right: 40px;
+    
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 40px;
     width: 100px;
     background-color: rgb(228, 227, 227);
     padding: 5px;
-    margin-left: 10px;
+    margin-left: 0px;
     text-align: center;
     border: 2px solid rgb(104, 102, 102);
     border-radius: 5px;
@@ -98,6 +98,7 @@ nav {
 .navbar li a {
     text-decoration: none;
     color: #333;
+    font-weight: bold;
     transition: color 0.3s ease;
     position: relative;
 }
@@ -105,12 +106,8 @@ nav {
 
 .navbar li a:hover {
     color: #d90808; 
-    transform: scale(1.1);
-    transition: color 0.3s ease, transform 0.3s ease;
+    
 }
-
- 
-
 
 @media (max-width: 1000px) {
     .navbar {
@@ -137,7 +134,7 @@ nav {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .navbar {
         justify-content: center;
         padding: 5px 0;
@@ -314,8 +311,26 @@ section.ingredients {
     }
 }
 
+.about {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
 /*Contact Page CSS*/
+.contactPage {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
 .contact {
     width: 40%;
     margin: 50px auto;
@@ -358,9 +373,24 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #555;
 }
-
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 
 /*Ingredients Page CSS*/
+
+.ingredientsPage {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
 
 .ingredients_intro h1, .ingredients_intro h2, .ingredients_intro h3 {
     text-align: center;
@@ -534,13 +564,16 @@ div.ingredients_list input:focus {
     position: absolute;
     top: 10px;
     left: 10px;
-    padding: 10px;
+    padding: 5px 10px;
+    height: 40px;
+    width: 120px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
+    font-weight: bold;
     box-shadow: 0 4px 8px rgba(o, 0, 0, 0.3);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -550,7 +583,24 @@ div.ingredients_list input:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 720px) {
+    #shuffleButton {
+        height: 35px;
+        font-weight: normal;
+    }
+}
+
 /* Favorites page */
+
+.favoritesPage {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
 h1.favorite {
     font-weight: bolder;
     font-size: 80px;
@@ -558,24 +608,57 @@ h1.favorite {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #favoritesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     list-style: none; 
     padding: 0;
     margin: 0; 
-    font-size: 20px;
+    font-size: 14px;
+    align-items: start;
+    justify-items: stretch;
 }
+#favoritesList li {
+    background: #f5f5f5; 
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    min-height: 200px;
+    padding: 15px;
+    margin: 10px;
+    font-size: 14px;
+}
+
 .favpic {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    border: 1px solid gray;
-    box-shadow: 0 0 10px black;
+    object-fit: cover;
 }
+
 .favpic:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
-    
+
+@media screen and (max-width: 720px) {
+    h1.favorite {
+        font-size: 50px;
+    }
+
+    #favoritesList {
+        font-size: 12px; 
+    }
+
+    .favpic {
+        border-radius: 4px;
+        border: 1px solid #ccc; 
+    }
+
+    .favpic:hover {
+        transform: scale(1.02); 
+    }
+}    
 
 #recipeList a{
     text-decoration: none;
@@ -597,13 +680,15 @@ h1.favorite {
 .trivia-container {
     position: relative; 
     left: 50%; 
-    width: 700px; 
+    width: 800px; 
     transform: translateX(-50%);
     background-color: white; 
     border: 1px solid #ddd; 
     border-radius: 10px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
     padding: 15px; 
+    font-size: 1.1em;
+    font-family: 'Comic Sans MS', cursive;
 }
 
 #triviaDisplay {
@@ -626,8 +711,9 @@ button:hover {
     background-color: #fb8c00;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .trivia-container {
+        font-family: sans-serif;
         width: 90%;
         top: 5px; 
         left: 50%; 

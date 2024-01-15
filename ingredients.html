@@ -25,30 +25,30 @@
             </ul>
         </nav>
     </header>
-    
-    <div class="ingredeints_intro">
-        <h1>Ingredients List</h1>
+    <div class="ingredientsPage">
+        <div class="ingredeints_intro">
+            <h1>Ingredients List</h1>
 
-        <h2>What do you have on hand?</h2>
-        <h3>List what you have and we'll do the rest!</h3>
-    </div>
-
-    <div class="ingredients_list">
-        <label>Enter ingredients:</label>
-        <div id="ingredientsContainer">
-            <div class="ingredientInput">
-                <input type="text" class="ingredient">
-                <button class="add" type="button" onclick="addIngredient()">+</button>
-                <button class="remove" type="button" onclick="removeIngredient(this)">-</button>
-            </div>
+            <h2>What do you have on hand?</h2>
+            <h3>List what you have and we'll do the rest!</h3>
         </div>
-        <br>
-        <button class="search-button" onclick="getRecipes()">Search</button>
-        <br><br>
-        <div id="recipeList"></div>
-        <br><br><br>
+
+        <div class="ingredients_list">
+            <label>Enter ingredients:</label>
+            <div id="ingredientsContainer">
+                <div class="ingredientInput">
+                    <input type="text" class="ingredient">
+                    <button class="add" type="button" onclick="addIngredient()">+</button>
+                    <button class="remove" type="button" onclick="removeIngredient(this)">-</button>
+                </div>
+            </div>
+            <br>
+            <button class="search-button" onclick="getRecipes()">Search</button>
+            <br><br>
+            <div id="recipeList"></div>
+            <br><br>
+        </div>
     </div>
-    
     <script src="script.js"></script>
 </body>
 
