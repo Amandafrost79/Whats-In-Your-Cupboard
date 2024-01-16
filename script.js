@@ -174,18 +174,16 @@ function displayRecipe(recipe, mealType, isRandom) {
 
 //Trivia Function
 
-function getFoodTrivia() {
+async function getFoodTrivia() {
     const triviaUrl = `https://api.spoonacular.com/food/trivia/random?apiKey=${apiKey}`;
 
-fetch(triviaUrl)
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const response = await fetch(triviaUrl);
+        const data = await response.json();
         document.getElementById('triviaDisplay').innerText = data.text;
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Error:', error);
-    });
-
+    }
 }
 
 // Function to Toggle Favorites

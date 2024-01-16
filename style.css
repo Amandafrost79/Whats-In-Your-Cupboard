@@ -319,20 +319,24 @@ section.ingredients {
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /*Contact Page CSS*/
 .contactPage {
-    width: 60%;
+    width: 80%;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+    font-size: 1.2em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 .contact {
-    width: 50%;
+    width: 40%;
     margin: 50px auto;
     padding: 30px;
     border: none; 
@@ -375,9 +379,9 @@ section.ingredients {
     align-items: center;
     gap: 20px;
 }
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .contact {
-        width: 70%;
+        width: 80%;
     }
 }
 
@@ -392,6 +396,7 @@ section.ingredients {
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .ingredients_intro h1, .ingredients_intro h2, .ingredients_intro h3 {
@@ -415,7 +420,7 @@ section.ingredients {
     
 }
 
-div.ingredients_list  {
+.ingredients_list  {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -423,7 +428,7 @@ div.ingredients_list  {
 }
 
 
-div.ingredients_list input {
+.ingredients_list input {
     text-align: center;
     width: 160px;
     border: 2px solid #ddd;
@@ -432,7 +437,7 @@ div.ingredients_list input {
     margin: 5px 0;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-div.ingredients_list input:focus {
+.ingredients_list input:focus {
     border-color: #BF2424;
     outline: none;
 }
@@ -486,12 +491,13 @@ div.ingredients_list input:focus {
 
 .recipe-details {
     position: relative;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: rgba(249, 249, 247, 0.9);
     border: 1px solid #ddd;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: Georgia, 'Times New Roman', Times, serif;
     
 }
 #ingredientList, #instructions {
@@ -587,15 +593,20 @@ div.ingredients_list input:focus {
 
 @media (max-width: 720px) {
     #shuffleButton {
-        height: 35px;
+        height: 32px;
         font-weight: normal;
+    }
+}
+@media (max-width: 700px) {
+    #recipeTitle {
+        font-size: 18px;
     }
 }
 
 /* Favorites page */
 
 .favoritesPage {
-    width: 80%;
+    width: 90%;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -606,7 +617,6 @@ div.ingredients_list input:focus {
 h1.favorite {
     font-weight: bolder;
     font-size: 80px;
-    font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #favoritesList {
@@ -684,13 +694,13 @@ h1.favorite {
     left: 50%; 
     width: 800px; 
     transform: translateX(-50%);
-    background-color: rgb(233, 222, 209); 
+    background-color: rgba(227, 223, 218, 0.955); 
     border: 1px solid #ddd; 
     border-radius: 10px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
-    padding: 15px; 
+    padding: 5px; 
     font-size: 1.1em;
-    font-family: 'Comic Sans MS', cursive;
+    font-family: 'Comic Sans MS', arial;
 }
 
 #triviaDisplay {
@@ -703,10 +713,10 @@ button {
     background-color: #f32d2d; 
     color: white;
     border: none;
-    padding: 10px 35px;
+    padding: 7px 35px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 button:hover {
