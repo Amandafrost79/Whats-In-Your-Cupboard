@@ -111,11 +111,11 @@ async function fetchRecipeData() {
         }
            
     } else if (mealType) {
-        url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&type=${mealType}`;
+        url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1&include-tags=${mealType}`;
         try {
             const response = await fetch(url);
             const data = await response.json();
-            displayRecipe(data.recipes[0], mealType, true);  // Pass true for isRandom
+            displayRecipe(data.recipes[0], mealType, true); 
         } catch (error) {
             console.error('Error fetching new recipe:', error);
             
@@ -126,7 +126,7 @@ async function fetchRecipeData() {
 //Shuffle Function for Random Recipes
 
 async function shuffleRecipe(mealType) {
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&type=' + mealType:''}`;
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=1${mealType ? '&include-tags=' + mealType:''}`;
     try {
         const response = await fetch(url);
         const data = await response.json();
