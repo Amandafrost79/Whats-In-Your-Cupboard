@@ -226,7 +226,6 @@ function displaySavedRecipes() {
 
         savedRecipes.forEach(recipe => {
             const listItem = document.createElement('li');
-
             listItem.innerHTML = `
                 <h2>${recipe.title}</h2>
                 <a href="recipe.html?id=${recipe.id}">
@@ -242,7 +241,6 @@ function displaySavedRecipes() {
         }
     }
 }
-
 
 //Function to Update Like Button
 
