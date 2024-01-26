@@ -1,6 +1,6 @@
 # What's In Your Cupboard?!
 
-![What's In Your Cupboard?! Logo](<![Logo](images/logo.png)>)
+![Logo](images/logo.png)
 
 Welcome to **What's In Your Cupboard?!**, a user-friendly recipe website designed for busy individuals, especially moms who balance work, learning, and family life. This project is the fruit of my learning journey at Get Coding NL, started in October 2023.
 
