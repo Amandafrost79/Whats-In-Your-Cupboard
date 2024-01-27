@@ -2,16 +2,13 @@
 
 Welcome to **What's In Your Cupboard?!**, a user-friendly recipe website designed for busy individuals, especially moms who balance work, learning, and family life. This project is the fruit of my learning journey at Get Coding NL, started in October 2023.
 
-<<<<<<< HEAD
 ![Logo](images/logo.png)
 
-=======
->>>>>>> 0d7cbdf (add screenshots)
 ## Overview
 
 "What's In Your Cupboard?!" aims to alleviate the everyday stress of meal planning. It's perfect for those evenings when you're unsure what to cook with the limited ingredients at hand. No more last-minute grocery store runs or staring into your fridge wondering what to make!
 
-<img src="images/sshot1.jpg" width="800" height="400">
+<img src="images/sshot1.jpg" width="500" height="250"> <img src="images/sshot2.jpg" width="500" height="250">
 
 ## Features
 
