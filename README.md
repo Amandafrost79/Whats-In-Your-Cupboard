@@ -11,6 +11,8 @@ Welcome to **What's In Your Cupboard?!**, a user-friendly recipe website designe
 
 "What's In Your Cupboard?!" aims to alleviate the everyday stress of meal planning. It's perfect for those evenings when you're unsure what to cook with the limited ingredients at hand. No more last-minute grocery store runs or staring into your fridge wondering what to make!
 
+<img src="images/sshot1.jpg" width="800" height="400">
+
 ## Features
 
 - **Ingredient-based Recipe Suggestions**: Enter the ingredients you have, and we'll suggest a recipe you can make right away.
