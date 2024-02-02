@@ -83,8 +83,6 @@ nav {
     padding: 40px;
 }
 .navbar li {
-    
-    display: inline-block;
     margin-right: 40px;
     width: 100px;
     background-color: rgb(228, 227, 227);
@@ -93,20 +91,24 @@ nav {
     text-align: center;
     border: 2px solid rgb(104, 102, 102);
     border-radius: 5px;
-    box-shadow: 5px 5px 5px rgb(103, 101, 101); 
+    box-shadow: 3px 3px 3px rgb(103, 101, 101);
+    
 }
 .navbar li a {
+    display: block;
     text-decoration: none;
     color: #333;
     font-weight: bold;
     transition: color 0.3s ease;
     position: relative;
+    
 }
 
 
 .navbar li a:hover {
     color: #d90808; 
-    
+    text-decoration: underline;
+    font-weight: bolder;
 }
 
 @media (max-width: 1000px) {
