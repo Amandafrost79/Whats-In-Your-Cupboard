@@ -2,7 +2,7 @@
 
 Welcome to **What's In Your Cupboard?!**, a user-friendly recipe website designed for busy individuals, especially moms who balance work, learning, and family life. This project is the first of many to come from my learning journey at [Get Coding](https://www.getcodding.ca/).
 
-## Live Demo: [What's In Your Cupboard?!](https://amandafrost79.github.io/Whats-In-Your-Cupboard/)
+## Live Demo: [What's In Your Cupboard?!](https://www.loom.com/share/dfaeee2a52e24e318037168229c1a9c8?sid=6d043e6b-03d6-4bb8-aa78-a1e0adf76195)
 
 ## 🥣 Overview
 
